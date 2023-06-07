@@ -10,6 +10,6 @@ export default {
   daisyui: {
     themes: [],
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 
