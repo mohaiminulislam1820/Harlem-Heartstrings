@@ -1,12 +1,73 @@
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Contexts } from "../Context/ContextWrapper";
+import { toast } from "react-toastify";
+import auth from "../../firebase-config";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const { signUpWithEmail, signOutUser } = useContext(Contexts);
+
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const errorMsgHandler = (msg) => {
+        setErrorMsg('⛔ ' + msg);
+        setTimeout(() => setErrorMsg(''), 4000);
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const rePassword = e.target.rePassword.value;
+        const name = e.target.name.value;
+        const photoUrl = e.target.photoUrl.value;
+
+        if (email == '' || password == '') {
+            errorMsgHandler('Cannot submit empty email and password fields');
+            return;
+        }
+
+        if (password.length < 6) {
+            errorMsgHandler('Password length has to be at least 6 characters');
+            return;
+        }
+
+        if (password !== rePassword) {
+            errorMsgHandler('Confirmed password do not match with Password');
+            return;
+        }
+
+        if (! /[A-Z]/.test(password)) {
+            errorMsgHandler('password do not have a capital letter');
+            return;
+        }
+
+        if (! /[^a-zA-Z0-9\s]/.test(password)) {
+            errorMsgHandler('password do not have a special character');
+            return;
+        }
+
+        try {
+            const newUser = await signUpWithEmail(email, password);
+
+            if (newUser) {
+                toast('✅ You have signed up successfully');
+
+                await updateProfile(auth.currentUser, { displayName: name, photoURL: photoUrl });
+
+                await signOutUser();
+                navigate('/login');
+            }
+        }
+
+        catch (error) {
+            errorMsgHandler(error.code);
+        }
+
     }
 
     return (
@@ -25,7 +86,7 @@ const Register = () => {
                     <h1>Already have an account? <span className="text-[#f45050] font-semibold cursor-pointer" onClick={() => navigate('/register')}>Sign In</span> here</h1>
                 </div>
 
-                <form onSubmit={handleSubmit} className="mt-10">
+                <form onSubmit={handleSubmit} className="mt-10 pb-8">
 
                     <div className="flex flex-col gap-2 mb-4">
                         <label htmlFor="name" className="font-semibold">Name</label>
@@ -42,7 +103,7 @@ const Register = () => {
                     <div className="flex flex-col gap-2 mb-4">
                         <label htmlFor="password" className="font-semibold">Password</label>
 
-                        <input type="password" name="password" className="auth-input" placeholder="****" />
+                        <input type="password" name="password" className="auth-input" placeholder="must include a capital letter and a special chracter" />
                     </div>
 
                     <div className="flex flex-col gap-2 mb-4">
@@ -57,7 +118,9 @@ const Register = () => {
                         <input type="url" name="photoUrl" className="auth-input" placeholder="photo url (eg: https://example.com/photo.jpg )" />
                     </div>
 
-                    <button className="bg-[#F9D949] mt-6 mb-8 btn-regular" type="submit">Sign Up</button>
+                    <button className="bg-[#F9D949] mt-6 btn-regular" type="submit">Sign Up</button>
+
+                    <span className='text-red-400 ml-4'>{errorMsg}</span>
 
                 </form>
 
