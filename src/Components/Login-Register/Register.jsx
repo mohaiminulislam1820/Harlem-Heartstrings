@@ -73,7 +73,7 @@ const Register = () => {
     return (
         <section className="container grid grid-cols-1 md:grid-cols-2 items-center gap-6 mt-12">
 
-            <img src="https://i.ibb.co/zQTD37S/b1ab81b5-f8dc-4f16-8527-9b0bef20cdd1-1.jpg" alt="illustration for creating account" className="rounded-lg" />
+            <img src="https://i.ibb.co/sjvfc4S/b4840356-320f-477b-bac0-b6e4d7469b83-1.jpg" alt="illustration for creating account" className="rounded-lg" />
 
             <div className="border rounded-lg shadow-lg p-6 lg:p-10 container">
 

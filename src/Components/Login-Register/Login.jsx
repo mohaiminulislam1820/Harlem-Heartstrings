@@ -1,13 +1,47 @@
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Contexts } from "../Context/ContextWrapper";
 
 
 const Login = () => {
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const { signInWithEmail, signInWithGoogle, setLoading } = useContext(Contexts);
+
+    const location = useLocation();
+    const from = location?.state?.from || '/';
+
+    const errorMsgHandler = (msg) => {
+        setErrorMsg('⛔ ' + msg);
+        setTimeout(() => setErrorMsg(''), 4000);
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(e.target.password.value);
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        if (email == '' || password == '') {
+            errorMsgHandler('Cannot submit empty email and password fields');
+            return;
+        }
+
+        try {
+
+            const loggedUser = await signInWithEmail(email, password);
+
+            loggedUser.user && navigate(from, { replace: true });
+        }
+        catch (error) {
+            errorMsgHandler(error.code);
+        }
+        finally {
+            setLoading(false);
+        }
+
     }
 
     return (
@@ -38,6 +72,7 @@ const Login = () => {
                     </div>
 
                     <button className="bg-[#F9D949] mt-4 btn-regular" type="submit">Sign In</button>
+                    <span className='text-red-400 ml-4'>{errorMsg}</span>
 
                 </form>
 
