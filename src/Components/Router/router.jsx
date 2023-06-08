@@ -43,7 +43,8 @@ const router = createBrowserRouter([
             },
 
         ]
-    }
+    },
+    
 ]);
 
 export default router;
