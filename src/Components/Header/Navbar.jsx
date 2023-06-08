@@ -16,11 +16,11 @@ const Navbar = () => {
 
             <div className="flex flex-wrap gap-6 items-center">
 
-                <ActiveLink to={''} >Home</ActiveLink>
+                <ActiveLink to={'/'} >Home</ActiveLink>
 
-                <ActiveLink to={''} >Instructors</ActiveLink>
+                <ActiveLink to={'/instructors'} >Instructors</ActiveLink>
 
-                <ActiveLink to={''} >Classes</ActiveLink>
+                <ActiveLink to={'/classes'} >Classes</ActiveLink>
 
                 {
                     user
@@ -32,10 +32,6 @@ const Navbar = () => {
                         </>
                         : <button onClick={() => navigate('/login')}>Login</button>
                 }
-
-
-
-
 
             </div>
 

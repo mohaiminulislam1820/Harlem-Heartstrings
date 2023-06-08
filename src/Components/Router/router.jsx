@@ -4,6 +4,8 @@ import Home from "../Home/Home";
 import ContextWrapper from "../Context/ContextWrapper";
 import Login from "../Login-Register/Login";
 import Register from "../Login-Register/Register";
+import Instructors from "../OtherPages/Instructors";
+import Classes from "../OtherPages/Classes";
 
 
 const router = createBrowserRouter([
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />
+            },
+            {
+                path: "/instructors",
+                element: <Instructors />
+            },
+            {
+                path: "/classes",
+                element: <Classes />
             },
 
         ]
