@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Contexts } from "../Context/ContextWrapper";
 import { useForm } from "react-hook-form";
+import addUserToDb from "../../utitlity-functions/addUser";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -9,7 +10,7 @@ const Login = () => {
 
     const [errorMsg, setErrorMsg] = useState('');
 
-    const [showPassword,setShowPassword]=useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const { signInWithEmail, signInWithGoogle, setLoading } = useContext(Contexts);
 
@@ -31,6 +32,14 @@ const Login = () => {
         try {
 
             const loggedUser = await signInWithEmail(data.email, data.password);
+            const sendUser = {
+                email: loggedUser.user.email,
+                image: loggedUser.user.photoURL,
+                name: loggedUser.user.displayName,
+                role: 'student'
+            }
+
+            await addUserToDb(sendUser);
 
             loggedUser.user && navigate(from, { replace: true });
         }
@@ -46,6 +55,14 @@ const Login = () => {
     const handleGoogleSignIn = async () => {
         try {
             const loggedUser = await signInWithGoogle();
+            const sendUser = {
+                email: loggedUser.user.email,
+                image: loggedUser.user.photoURL,
+                name: loggedUser.user.displayName,
+                role: 'student'
+            }
+
+            await addUserToDb(sendUser);
 
             loggedUser.user && navigate(from, { replace: true });
         }
@@ -81,8 +98,8 @@ const Login = () => {
                         <label htmlFor="password" className="font-semibold">Password</label>
 
                         <div className="relative flex flex-col">
-                            <input type={showPassword?'text':'password'} {...register("password")} className="auth-input" placeholder="password" />
-                            <img src="https://i.ibb.co/Ypc26t9/visibility-FILL0-wght400-GRAD0-opsz48.png" alt="visibility eye icon" className="w-6 absolute top-2 right-1 " onClick={()=>setShowPassword(!showPassword)} />
+                            <input type={showPassword ? 'text' : 'password'} {...register("password")} className="auth-input" placeholder="password" />
+                            <img src="https://i.ibb.co/Ypc26t9/visibility-FILL0-wght400-GRAD0-opsz48.png" alt="visibility eye icon" className="w-6 absolute top-2 right-1 " onClick={() => setShowPassword(!showPassword)} />
                         </div>
 
                     </div>

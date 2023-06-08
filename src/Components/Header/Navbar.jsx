@@ -25,7 +25,7 @@ const Navbar = () => {
                 {
                     user
                         ? <>
-                            <ActiveLink to={''} >Dashboard</ActiveLink>
+                            <ActiveLink to={'/dashboard'} >Dashboard</ActiveLink>
                             <img src={user.photoURL || 'https://i.ibb.co/FzdHYpH/7518698-avatar-people-user-icon-1.png'} alt="user icon" className="rounded-full object-cover w-12" />
 
                             <button onClick={signOutUser}>Sign Out</button>

@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import usePageTitle from "../../Custom hooks/pageTitleHook";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from "../../firebase-config";
+import setToken from "../../utitlity-functions/setToken";
 
 export const Contexts = createContext();
 
@@ -13,9 +14,13 @@ const ContextWrapper = ({ children }) => {
     usePageTitle();
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+        const unsubscribe = onAuthStateChanged(auth,async currentUser => {
 
             setUser(currentUser);
+            if(currentUser){
+                setToken(currentUser.email);
+            }
+
             setLoading(false);
         });
 
