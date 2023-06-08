@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 const Register = () => {
 
-    const { register, handleSubmit } = useForm({ mode: "onSubmit" });
+    const { register, handleSubmit } = useForm();
 
     const navigate = useNavigate();
 
@@ -86,7 +86,7 @@ const Register = () => {
                     <div className="flex flex-col gap-2 mb-4">
                         <label htmlFor="name" className="font-semibold">Name</label>
 
-                        <input type="text" {...register("name", { required: true, message: "Can not be empty" })} className="auth-input" placeholder="Your Name" />
+                        <input type="text" {...register("name")} className="auth-input" placeholder="Your Name" />
                     </div>
 
                     <div className="flex flex-col gap-2 mb-4">

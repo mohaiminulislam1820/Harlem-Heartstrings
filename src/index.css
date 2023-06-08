@@ -3,14 +3,24 @@
 @tailwind utilities;
 
 
-.container{
+.container {
     @apply w-10/12 mx-auto;
 }
 
-.auth-input{
+.auth-input {
     @apply border-2 py-1 px-4 rounded-md;
 }
 
-.btn-regular{
-    @apply px-6 py-2  font-bold rounded-lg;
+.btn-regular {
+    @apply px-6 py-2 font-bold rounded-lg;
+}
+
+input[type="password"]::-webkit-reveal,
+input[type="password"]::-webkit-clear-button {
+    display: none;
+}
+
+input[type="password"]::-moz-reveal,
+input[type="password"]::-moz-clear-button {
+    display: none;
 }

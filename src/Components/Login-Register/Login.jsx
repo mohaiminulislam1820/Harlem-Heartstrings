@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Contexts } from "../Context/ContextWrapper";
-
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-
+    const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
 
     const [errorMsg, setErrorMsg] = useState('');
@@ -21,19 +21,16 @@ const Login = () => {
         setTimeout(() => setErrorMsg(''), 4000);
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+    const onSubmit = async data => {
 
-        if (email == '' || password == '') {
+        if (data.email == '' || data.password == '') {
             errorMsgHandler('Cannot submit empty email and password fields');
             return;
         }
 
         try {
 
-            const loggedUser = await signInWithEmail(email, password);
+            const loggedUser = await signInWithEmail(data.email, data.password);
 
             loggedUser.user && navigate(from, { replace: true });
         }
@@ -72,19 +69,19 @@ const Login = () => {
                     <h2 className="text-5xl font-bold">Login</h2>
                 </div>
 
-                <form onSubmit={handleSubmit} className="mt-8">
+                <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
 
                     <div className="flex flex-col gap-2 mb-4">
                         <label htmlFor="email" className="font-semibold">Email</label>
 
-                        <input type="email" name="email" className="auth-input" placeholder="Your Email" />
+                        <input type="email" {...register("email")} className="auth-input" placeholder="Your Email" />
                     </div>
 
                     <div className="flex flex-col gap-2 mb-4">
                         <label htmlFor="password" className="font-semibold">Password</label>
 
                         <div className="relative flex flex-col">
-                            <input type={showPassword?'text':'password'} name="password" className="auth-input appearance-none" placeholder="password" />
+                            <input type={showPassword?'text':'password'} {...register("password")} className="auth-input" placeholder="password" />
                             <img src="https://i.ibb.co/Ypc26t9/visibility-FILL0-wght400-GRAD0-opsz48.png" alt="visibility eye icon" className="w-6 absolute top-2 right-1 " onClick={()=>setShowPassword(!showPassword)} />
                         </div>
 
