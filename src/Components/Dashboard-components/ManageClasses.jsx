@@ -7,7 +7,7 @@ import ClassRow from './ClassRow';
 const ManageClasses = () => {
     const { user } = useContext(Contexts);
     const { isLoading, error, data: classes } = useQuery({
-        queryKey: ['classes'],
+        queryKey: ['allclasses'],
         queryFn: () => axios.get(`https://harlem-heartstrings-api.vercel.app/allclasses?email=${user.email}`, {
             headers: {
                 "Content-Type": "application/json",
