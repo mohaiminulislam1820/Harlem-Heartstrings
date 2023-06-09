@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const ClassRow = ({ classData }) => {
     const { image, name, instructorName, available_seats, price, status, instructor_email } = classData;
