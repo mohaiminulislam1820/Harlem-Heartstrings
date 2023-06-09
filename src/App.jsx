@@ -6,14 +6,14 @@ import Footer from "./Components/Footer/Footer";
 
 
 const App = () => {
-  const currentLocation=useLocation();
-  const path=currentLocation.pathname;
+  const currentLocation = useLocation();
+  const path = currentLocation.pathname;
   return (
     <>
-      {!path.includes('dashboard') &&<Header></Header>}
+      {!path.includes('dashboard') && <Header></Header>}
       <Outlet></Outlet>
-      <Footer></Footer>
-      
+      {!path.includes('dashboard') && <Footer></Footer>}
+
       <ToastContainer hideProgressBar={true} autoClose={1500}></ToastContainer>
     </>
   );

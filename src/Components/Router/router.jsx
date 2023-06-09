@@ -7,6 +7,9 @@ import Register from "../Login-Register/Register";
 import Instructors from "../OtherPages/Instructors";
 import Classes from "../OtherPages/Classes";
 import DashboardRoute from "./DashboardRoute";
+import ManageClasses from "../Dashboard-components/ManageClasses";
+import ManageUsers from "../Dashboard-components/ManageUsers";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -39,12 +42,22 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard",
-                element: <DashboardRoute />
+                element: <PrivateRoute><DashboardRoute /></PrivateRoute>,
+                children: [
+                    {
+                        path: "manage-classes",
+                        element: <ManageClasses />
+                    },
+                    {
+                        path: "manage-users",
+                        element: <ManageUsers />
+                    }
+                ]
             },
 
         ]
     },
-    
+
 ]);
 
 export default router;

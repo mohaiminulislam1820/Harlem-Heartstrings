@@ -14,17 +14,19 @@ const ContextWrapper = ({ children }) => {
     usePageTitle();
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,async currentUser => {
+        const unsubscribe = onAuthStateChanged(auth, async currentUser => {
 
             setUser(currentUser);
-            if(currentUser){
+            if (currentUser) {
                 setToken(currentUser.email);
             }
 
             setLoading(false);
         });
 
-        return () => unsubscribe();
+        return () => {
+            return unsubscribe()
+        };
     }, []);
 
     const signUpWithEmail = (email, password) => {
