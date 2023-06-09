@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Contexts } from "../Context/ContextWrapper";
 import { useContext } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddClass = () => {
     const { user } = useContext(Contexts);
@@ -13,6 +15,21 @@ const AddClass = () => {
 
     const onSubmit = async data => {
         console.log(data)
+        const newClass = {
+            image: data.image, name: data.name, instructorName: data.instructorName,
+            available_seats: data.availableSeats, price: data.price, enrolled: 0,
+            instructor_email: data.instructorEmail, status: "pending"
+        };
+        console.log(newClass)
+        const result=await axios.post(`https://harlem-heartstrings-api.vercel.app/add-class?email=${user.email}`,JSON.stringify(newClass), {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        console.log(result)
+        if(result.data.insertedId)
+            toast('✅ Class added successfully');
     }
 
     return (
