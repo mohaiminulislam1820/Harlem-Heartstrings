@@ -21,30 +21,34 @@ const InstructorClasses = () => {
     if (error) return 'An error has occurred: ' + error.message
     return (
         <section>
-            <h1 className="container mt-16 font-bold text-center text-5xl mb-12">My Classes</h1>
+            <h1 className="container mt-16 font-bold text-center text-5xl mb-12 ">My Classes</h1>
 
-            <table className="border">
-                <thead>
-                    <tr className='border'>
-                        <th className="pl-6 py-3">Class Image</th>
-                        <th className="pl-6 py-3">Class name</th>
-                        <th className="pl-6 py-3">Instructor name</th>
-                        <th className="pl-6 py-3">Instructor email</th>
-                        <th className="pl-6 py-3">Available seats</th>
-                        <th className="pl-6 py-3">Price</th>
-                        <th className="pl-6 py-3">Status</th>
-                        <th className="pl-6 py-3">Total Enrolled</th>
-                        <th className="pl-6 py-3">Feedback</th>
-                        <th className="pl-6 py-3">Actions</th>
+            <div className='overflow-x-auto'>
+                <table className="border">
+                    <thead>
+                        <tr className='border'>
+                            <th className="pl-6 py-3">Class Image</th>
+                            <th className="pl-6 py-3">Class name</th>
+                            <th className="pl-6 py-3">Instructor name</th>
+                            <th className="pl-6 py-3">Instructor email</th>
+                            <th className="pl-6 py-3">Available seats</th>
+                            <th className="pl-6 py-3">Price</th>
+                            <th className="pl-6 py-3">Status</th>
+                            <th className="pl-6 py-3">Total Enrolled</th>
+                            <th className="pl-6 py-3">Feedback</th>
+                            <th className="pl-6 py-3">Actions</th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
+                    </thead>
 
-                <tbody className='divide-y-2'>
-                    {classes.data.map(classData => <InstructorClassRow key={classData._id} classData={classData} />) }
-                </tbody>
-            </table>
+                    <tbody className='divide-y-2'>
+                        {classes.data.map(classData => <InstructorClassRow key={classData._id} classData={classData} />)}
+                    </tbody>
+                </table>
+
+            </div>
+
         </section>
     );
 };

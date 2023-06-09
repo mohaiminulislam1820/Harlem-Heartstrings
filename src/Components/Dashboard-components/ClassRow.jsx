@@ -1,7 +1,27 @@
+import { useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
-const ClassRow = ({ classData }) => {
-    const { image, name, instructorName, available_seats, price, status, instructor_email } = classData;
+const ClassRow = ({ classData, adminEmail, refId }) => {
+    const { image, name, instructorName, available_seats, price, status, instructor_email, _id } = classData;
+
+    const queryClient = useQueryClient();
+
+    const handleTaskStatus = async (taskStatus) => {
+        const result = await axios.patch(`https://harlem-heartstrings-api.vercel.app/update-task-status/${_id}?email=${adminEmail}`, JSON.stringify({ status: taskStatus }), {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        if (result.data.modifiedCount == 1) {
+            toast('✅ Updated task Status');
+            queryClient.invalidateQueries({ queryKey: ['allclasses'] });
+        }
+    }
+
     return (
         <tr>
             <td className='pl-6 py-2'><img src={image} alt="class photo" /></td>
@@ -12,9 +32,9 @@ const ClassRow = ({ classData }) => {
             <td className='pl-6 py-2'>{price}</td>
             <td className='pl-6 py-2'>{status}</td>
             <td className='pl-6 flex gap-2 py-2'>
-                <button className='btn-table bg-green-600 text-white'>Approve</button>
-                <button className='btn-table bg-red-500'>Deny</button>
-                <button className='btn-table bg-yellow-400'>Feedback</button></td>
+                <button className='btn-table bg-green-600 text-white' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('approved')}>Approve</button>
+                <button className='btn-table bg-red-500' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('denied')}>Deny</button>
+                <label htmlFor="my_modal_6" className='btn-table bg-yellow-400' onClick={() =>refId.current=_id}>Send Feedback</label></td>
         </tr>
     );
 };
