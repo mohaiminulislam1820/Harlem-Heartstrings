@@ -15,7 +15,7 @@ const MySelectedClasses = () => {
             }
         })
     })
-console.log(myClasses?.data)
+
     if (isLoading) return 'Loading...'
 
     return (
@@ -37,7 +37,7 @@ console.log(myClasses?.data)
                     </thead>
 
                     <tbody className='divide-y-2'>
-                        {myClasses?.data?.length==0?'No classes selected yet':myClasses?.data.map(myClass=><StudentClass key={myClass._id} myClass={myClass} />)}
+                        {myClasses?.data.map(myClass=><StudentClass key={myClass._id} myClass={myClass} userEmail={user.email} />)}
                     </tbody>
                 </table>
             </div>

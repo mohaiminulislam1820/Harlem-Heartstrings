@@ -17,7 +17,7 @@ const ClassRow = ({ classData, adminEmail, refId }) => {
         });
 
         if (result.data.modifiedCount == 1) {
-            toast('✅ Updated task Status');
+            toast('✅ Updated Class Status');
             queryClient.invalidateQueries({ queryKey: ['allclasses'] });
         }
     }

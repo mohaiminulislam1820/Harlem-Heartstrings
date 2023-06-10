@@ -15,9 +15,9 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         });
-
+console.log(result.data)
         if (result?.data?.modifiedCount == 1) {
-            toast('✅ Updated task Status');
+            toast('✅ Selected Class Successfully');
         }
         else if (result?.data?.modifiedCount == 'exists') {
             toast('⚠️ Class already added');
