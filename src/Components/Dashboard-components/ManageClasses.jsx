@@ -8,9 +8,9 @@ import { toast } from 'react-toastify';
 const ManageClasses = () => {
     const { user } = useContext(Contexts);
 
-    const refId=useRef();
-    const refFeedback=useRef();
-    const refModal=useRef();
+    const refId = useRef();
+    const refFeedback = useRef();
+    const refModal = useRef();
 
     const { isLoading, error, data: classes } = useQuery({
         queryKey: ['allclasses'],
@@ -22,7 +22,7 @@ const ManageClasses = () => {
         })
     })
 
-    const handleSendFeedback=async()=>{
+    const handleSendFeedback = async () => {
         const result = await axios.patch(`https://harlem-heartstrings-api.vercel.app/update-feedback/${refId.current}?email=${user.email}`, JSON.stringify({ feedback: refFeedback.current.value }), {
             headers: {
                 "Content-Type": "application/json",
@@ -30,10 +30,10 @@ const ManageClasses = () => {
             }
         });
         console.log(result);
-        if(result){
+        if (result) {
             toast('✅ Sent your feedback.')
         }
-        refModal.current.checked=false;
+        refModal.current.checked = false;
     }
 
     if (isLoading) return 'Loading...'
@@ -41,29 +41,31 @@ const ManageClasses = () => {
     if (error) return 'An error has occurred: ' + error.message
 
     return (
-        <div className="mt-16 overflow-x-auto">
+        <div className="mt-16">
             <h1 className="text-center text-5xl font-bold mb-16">All Classes</h1>
 
-            <table className="border">
-                <thead>
-                    <tr className='border'>
-                        <th className="pl-6 py-3">Class Image</th>
-                        <th className="pl-6 py-3">Class name</th>
-                        <th className="pl-6 py-3">Instructor name</th>
-                        <th className="pl-6 py-3">Instructor email</th>
-                        <th className="pl-6 py-3">Available seats</th>
-                        <th className="pl-6 py-3">Price</th>
-                        <th className="pl-6 py-3">Status</th>
-                        <th className="pl-6 py-3">Actions</th>
+            <div className='overflow-x-auto'>
+                <table className="border">
+                    <thead>
+                        <tr className='border'>
+                            <th className="pl-6 py-3">Class Image</th>
+                            <th className="pl-6 py-3">Class name</th>
+                            <th className="pl-6 py-3">Instructor name</th>
+                            <th className="pl-6 py-3">Instructor email</th>
+                            <th className="pl-6 py-3">Available seats</th>
+                            <th className="pl-6 py-3">Price</th>
+                            <th className="pl-6 py-3">Status</th>
+                            <th className="pl-6 py-3">Actions</th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
+                    </thead>
 
-                <tbody className='divide-y-2'>
-                    {classes.data.map(classData => <ClassRow key={classData._id} classData={classData} adminEmail={user.email} refId={refId} />)}
-                </tbody>
-            </table>
+                    <tbody className='divide-y-2'>
+                        {classes.data.map(classData => <ClassRow key={classData._id} classData={classData} adminEmail={user.email} refId={refId} />)}
+                    </tbody>
+                </table>
+            </div>
 
             {/* modal */}
             <input type="checkbox" ref={refModal} id="my_modal_6" className="modal-toggle" />

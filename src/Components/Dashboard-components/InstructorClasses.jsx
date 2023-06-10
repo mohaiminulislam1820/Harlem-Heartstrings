@@ -17,7 +17,7 @@ const InstructorClasses = () => {
     })
 
     if (isLoading) return 'Loading...'
-    console.log(classes)
+
     if (error) return 'An error has occurred: ' + error.message
     return (
         <section>

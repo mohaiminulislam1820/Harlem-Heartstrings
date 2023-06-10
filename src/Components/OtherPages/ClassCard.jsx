@@ -5,6 +5,10 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
     const { name, image, instructorName, available_seats, price,_id } = violinClass;
 
     const handleSelect = async () => {
+        if(!role){
+            toast("Please Login First");
+            return;
+        }
         const result = await axios.patch(`https://harlem-heartstrings-api.vercel.app/update-selected-class?email=${userEmail}`, JSON.stringify({ selected_class: _id }), {
             headers: {
                 "Content-Type": "application/json",
@@ -31,7 +35,7 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
 
             <p className="mb-2"><span className="font-semibold">Price : </span>{price}</p>
 
-            <button className="btn-regular bg-[#F9D949] mt-4" disabled={role == 'student' ? false : true} onClick={handleSelect}>Select</button>
+            <button className="btn-regular bg-[#F9D949] mt-4" disabled={role == 'admin' || role=='instructor' ? true : false} onClick={handleSelect}>Select</button>
 
         </div>
     );
