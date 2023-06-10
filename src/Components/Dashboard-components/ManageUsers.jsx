@@ -17,7 +17,7 @@ const ManageUsers = () => {
     })
 
     if (isLoading) return 'Loading...'
-    console.log(users)
+
     return (
         <div className='mt-16 overflow-x-auto'>
             <h1 className='text-center text-5xl font-bold mb-16'>All Users</h1>
@@ -36,7 +36,7 @@ const ManageUsers = () => {
                 </thead>
 
                 <tbody className='divide-y-2'>
-{users.data.map(userData=><UserRow key={userData._id} userData={userData} />)}
+{users.data.map(userData=><UserRow key={userData._id} userData={userData} adminEmail={user.email} />)}
                 </tbody>
             </table>
         </div>
