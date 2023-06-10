@@ -12,6 +12,10 @@ import ManageUsers from "../Dashboard-components/ManageUsers";
 import PrivateRoute from "./PrivateRoute";
 import AddClass from "../Dashboard-components/AddClass";
 import InstructorClasses from "../Dashboard-components/InstructorClasses";
+import MySelectedClasses from "../Dashboard-components/MySelectedClasses";
+import MyEnrolledClasses from "../Dashboard-components/MyEnrolledClasses";
+import Payment from "../Dashboard-components/Payment";
+import PaymentHistory from "../Dashboard-components/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -61,6 +65,23 @@ const router = createBrowserRouter([
                     {
                         path: "instructor-classes",
                         element: <InstructorClasses />
+                    },
+                    {
+                        path: "my-selected-classes",
+                        element: <MySelectedClasses />
+                    }
+                    ,
+                    {
+                        path: "my-enrolled-classes",
+                        element: <MyEnrolledClasses />
+                    },
+                    {
+                        path: "payment",
+                        element: <Payment />
+                    },
+                    {
+                        path: "payment-history",
+                        element: <PaymentHistory />
                     }
                 ]
             },
