@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { Contexts } from '../Context/ContextWrapper';
 import InstructorClassRow from './InstructorClassRow';
+import Loading from '../Loading';
 
 const InstructorClasses = () => {
     const { user } = useContext(Contexts);
@@ -16,7 +17,7 @@ const InstructorClasses = () => {
         })
     })
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading/>
 
     if (error) return 'An error has occurred: ' + error.message
     return (

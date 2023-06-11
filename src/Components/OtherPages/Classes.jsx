@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import ClassCard from './ClassCard';
 import getUserRole from "../../utitlity-functions/getUserRole";
+import Loading from "../Loading";
 
 const Classes = () => {
     const { user } = useContext(Contexts);
@@ -25,7 +26,7 @@ const Classes = () => {
             run();    
     },[user])
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading></Loading>
 
     if (error) return 'An error has occurred: ' + error.message
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { Contexts } from '../Context/ContextWrapper';
 import UserRow from './UserRow';
+import Loading from '../Loading';
 
 const ManageUsers = () => {
     const { user } = useContext(Contexts);
@@ -16,7 +17,7 @@ const ManageUsers = () => {
         })
     })
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading/>
 
     return (
         <div className='mt-16 overflow-x-auto'>

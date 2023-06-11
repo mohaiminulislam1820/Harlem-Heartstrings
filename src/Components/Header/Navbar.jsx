@@ -2,13 +2,14 @@ import { useNavigate } from "react-router-dom";
 import ActiveLink from "./ActiveLink";
 import { useContext } from "react";
 import { Contexts } from "../Context/ContextWrapper";
+import Loading from "../Loading";
 
 
 const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const { user, signOutUser } = useContext(Contexts);
+    const { user, signOutUser, loading } = useContext(Contexts);
 
     return (
         <nav className="container my-10 flex justify-between flex-wrap items-center gap-x-32 gap-y-6">
@@ -22,8 +23,8 @@ const Navbar = () => {
 
                 <ActiveLink to={'/classes'} >Classes</ActiveLink>
 
-                {
-                    user
+                {loading ? <Loading />
+                    : user
                         ? <>
                             <ActiveLink to={'/dashboard'} >Dashboard</ActiveLink>
                             <img src={user.photoURL || 'https://i.ibb.co/FzdHYpH/7518698-avatar-people-user-icon-1.png'} alt="user icon" className="rounded-full object-cover w-12" />

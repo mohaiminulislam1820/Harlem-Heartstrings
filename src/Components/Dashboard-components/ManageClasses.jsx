@@ -4,6 +4,7 @@ import { useContext, useRef } from 'react';
 import { Contexts } from '../Context/ContextWrapper';
 import ClassRow from './ClassRow';
 import { toast } from 'react-toastify';
+import Loading from '../Loading';
 
 const ManageClasses = () => {
     const { user } = useContext(Contexts);
@@ -36,7 +37,7 @@ const ManageClasses = () => {
         refModal.current.checked = false;
     }
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading/>
 
     if (error) return 'An error has occurred: ' + error.message
 

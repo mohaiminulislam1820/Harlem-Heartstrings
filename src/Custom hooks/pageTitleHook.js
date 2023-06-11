@@ -6,7 +6,11 @@ const usePageTitle = () => {
 
     useEffect(() => {
         if (currentLocation.pathname == '/')
-            document.title = "Harlem Heartstrings - Home"
+            document.title = "Harlem Heartstrings - Home";
+        else if(currentLocation.pathname.includes('dashboard/')){
+            const title = currentLocation.pathname.split('/')[1];
+            document.title = "Harlem Heartstrings - " + title[0].toUpperCase() + title.slice(1)+"-"+currentLocation.pathname.split('/')[2];
+        }
         else {
             const title = currentLocation.pathname.split('/')[1];
             document.title = "Harlem Heartstrings - " + title[0].toUpperCase() + title.slice(1);

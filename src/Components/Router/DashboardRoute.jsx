@@ -5,6 +5,7 @@ import getUserRole from "../../utitlity-functions/getUserRole";
 import AdminDashboard from "../Dashboards/AdminDashboard";
 import InstructorDashboard from "../Dashboards/InstructorDashboard";
 import StudentDashboard from "../Dashboards/StudentDashboard";
+import Loading from "../Loading";
 
 const DashboardRoute = () => {
 
@@ -15,7 +16,7 @@ const DashboardRoute = () => {
         queryFn: () => getUserRole(user?.email)
     })
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading/>
 
     if (role.data.role === "admin")
         return <AdminDashboard></AdminDashboard>

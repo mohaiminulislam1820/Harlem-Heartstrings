@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import getPopularClasses from "../../utitlity-functions/getPopularClasses";
 import PopularClassCard from "./PopularClassCard";
+import Loading from "../Loading";
 
 
 const PopularClasses = () => {
@@ -9,7 +10,7 @@ const PopularClasses = () => {
         queryFn: () => getPopularClasses()
     });
 
-    if (isLoading) return 'Loading...';
+    if (isLoading) return <Loading/>;
 
     return (
         <div className="mt-24 container">

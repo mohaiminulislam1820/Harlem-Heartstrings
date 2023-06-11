@@ -4,43 +4,92 @@
 
 
 .container {
-    @apply w-10/12 mx-auto;
+  @apply w-10/12 mx-auto;
 }
 
 .auth-input {
-    @apply border-2 py-1 px-4 rounded-md;
+  @apply border-2 py-1 px-4 rounded-md;
 }
 
 .btn-regular {
-    @apply px-6 py-2 font-bold rounded-lg;
+  @apply px-6 py-2 font-bold rounded-lg;
 }
 
 .btn-table {
-    @apply px-4 py-2 font-bold rounded-lg;
+  @apply px-4 py-2 font-bold rounded-lg;
 }
 
 input[type="password"]::-webkit-reveal,
 input[type="password"]::-webkit-clear-button {
-    display: none;
+  display: none;
 }
 
 input[type="password"]::-moz-reveal,
 input[type="password"]::-moz-clear-button {
-    display: none;
+  display: none;
 }
 
-.section-title{
-    @apply text-center text-5xl font-bold;
+.section-title {
+  @apply text-center text-5xl font-bold;
 }
 
 .bg-slider-1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/cwvkFTz/pexels-10380835-1-1.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/cwvkFTz/pexels-10380835-1-1.webp');
 }
 
 .bg-slider-2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/tHzvbc8/pexels-cottonbro-studio-7095043-1-1-11zon.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/tHzvbc8/pexels-cottonbro-studio-7095043-1-1-11zon.webp');
 }
 
 .bg-slider-3 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/Wps4TDt/pexels-cottonbro-studio-70974.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/Wps4TDt/pexels-cottonbro-studio-70974.webp');
 }
+
+.loader {
+  font-size: 10px;
+  margin: 0 auto;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  border: 1px rgb(230, 230, 230) solid;
+  position: relative;
+  animation: loader 1.4s infinite linear;
+  transform: translateZ(0);
+}
+
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #006FFF;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+
+.loader:after {
+  background: rgb(255, 255, 255);
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  border: 1px rgb(230, 230, 230) solid;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

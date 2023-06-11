@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import InstuctorCard from './InstuctorCard';
+import Loading from '../Loading';
 
 const Instructors = () => {
 
@@ -9,7 +10,7 @@ const Instructors = () => {
         queryFn: () => axios.get('https://harlem-heartstrings-api.vercel.app/instructors'),
     })
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading/>
 
     if (error) return 'An error has occurred: ' + error.message
     

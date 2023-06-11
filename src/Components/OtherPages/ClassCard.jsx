@@ -15,7 +15,7 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         });
-console.log(result.data)
+        
         if (result?.data?.modifiedCount == 1) {
             toast('✅ Selected Class Successfully');
         }

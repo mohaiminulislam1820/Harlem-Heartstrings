@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import PopularInstructorCard from "./PopularInstructorCard";
+import Loading from "../Loading";
 
 const PopularInstructors = () => {
     const { isLoading, data: popularInstructors = [] } = useQuery({
@@ -8,7 +9,7 @@ const PopularInstructors = () => {
         queryFn: () => axios.get('https://harlem-heartstrings-api.vercel.app/popular-instructors')
     });
 
-    if (isLoading) return 'Loading...';
+    if (isLoading) return <Loading/>;
 
     return (
         <div className="mt-24 container">

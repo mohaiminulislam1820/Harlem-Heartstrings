@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { Contexts } from '../Context/ContextWrapper';
 import StudentClass from './StudentClass';
+import Loading from '../Loading';
 
 const MySelectedClasses = () => {
     const { user } = useContext(Contexts);
@@ -16,7 +17,7 @@ const MySelectedClasses = () => {
         })
     })
 
-    if (isLoading) return 'Loading...'
+    if (isLoading) return <Loading/>
 
     return (
         <section className="container mt-16">
