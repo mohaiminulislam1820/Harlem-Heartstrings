@@ -7,7 +7,7 @@ const Footer = () => {
                     <p className="text-gray-200"> Learn to play the violin with passion and grace.</p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16 ">
                     <div className="flex flex-col justify-center">
                         <p className="font-semibold text-xl mb-1 ">Socials</p>
                         <div className="flex gap-4">
@@ -16,6 +16,14 @@ const Footer = () => {
                             <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
                         </div>
                     </div>
+
+                    <div>
+                        <span className="footer-title">Office</span>
+                        <p>Road-14, Mirpur-12 <br /> Dhaka, Bangladesh</p>
+                        <p> +999 234 88 <br />  +880 018 1234 9999</p>
+                        
+                    </div>
+
                     <div className="flex flex-col">
                         <span className="footer-title">Services</span>
                         <a className="link link-hover">Classes</a>
@@ -28,7 +36,7 @@ const Footer = () => {
                         <a className="link link-hover">About us</a>
                         <a className="link link-hover">Contact</a>
                         <a className="link link-hover">Jobs</a>
-                        
+
                     </div>
                     <div className="flex flex-col">
                         <span className="footer-title">Legal</span>
@@ -36,7 +44,7 @@ const Footer = () => {
                         <a className="link link-hover">Privacy policy</a>
                         <a className="link link-hover">Cookie policy</a>
                     </div>
-                    <div>
+                    <div className="col-span-2">
                         <span className="footer-title">Newsletter</span>
                         <div className="form-control w-80">
                             <label className="label">

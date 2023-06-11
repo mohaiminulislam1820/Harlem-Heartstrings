@@ -28,3 +28,19 @@ input[type="password"]::-moz-reveal,
 input[type="password"]::-moz-clear-button {
     display: none;
 }
+
+.section-title{
+    @apply text-center text-5xl font-bold;
+}
+
+.bg-slider-1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/cwvkFTz/pexels-10380835-1-1.webp');
+}
+
+.bg-slider-2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/tHzvbc8/pexels-cottonbro-studio-7095043-1-1-11zon.webp');
+}
+
+.bg-slider-3 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('https://i.ibb.co/Wps4TDt/pexels-cottonbro-studio-70974.webp');
+}
