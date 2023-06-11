@@ -20,11 +20,11 @@ const ManageUsers = () => {
     if (isLoading) return <Loading/>
 
     return (
-        <div className='mt-16 overflow-x-auto'>
+        <div className='mt-16 overflow-x-auto '>
             <h1 className='text-center text-5xl font-bold mb-16'>All Users</h1>
             <table>
                 <thead>
-                    <tr className='border'>
+                    <tr className='border bg-slate-200'>
                         <th className="pl-6 py-3">Image</th>
                         <th className="pl-6 py-3">Name</th>
                         <th className="pl-6 py-3">Email</th>
@@ -36,7 +36,7 @@ const ManageUsers = () => {
 
                 </thead>
 
-                <tbody className='divide-y-2'>
+                <tbody className='divide-y-2 border'>
 {users.data.map(userData=><UserRow key={userData._id} userData={userData} adminEmail={user.email} />)}
                 </tbody>
             </table>

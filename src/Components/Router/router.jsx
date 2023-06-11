@@ -78,7 +78,7 @@ const router = createBrowserRouter([
                         element: <MyEnrolledClasses />
                     },
                     {
-                        path: "payment",
+                        path: "payment/:classId",
                         element: <Payment />
                     },
                     {

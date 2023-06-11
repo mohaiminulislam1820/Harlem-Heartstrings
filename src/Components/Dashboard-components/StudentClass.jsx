@@ -1,11 +1,13 @@
 import { useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const StudentClass = ({ myClass, userEmail }) => {
     const { name, image, instructorName, price, _id } = myClass;
     const queryClient = useQueryClient();
-    console.log()
+    const navigate=useNavigate();
+
     const handleDelete = async () => {
         const result = await axios.patch(`https://harlem-heartstrings-api.vercel.app/remove-class/${_id}?email=${userEmail}`,{}, {
             headers: {
@@ -27,7 +29,7 @@ const StudentClass = ({ myClass, userEmail }) => {
             <td className='pl-6 py-2'>{price}</td>
             <td className='pl-6'>
                 <div className="flex gap-2 ">
-                    <button className='btn-table bg-yellow-500 block'>Pay</button>
+                    <button className='btn-table bg-yellow-500 block' onClick={()=>navigate(`/dashboard/payment/${_id}`)}>Pay</button>
                     <button className='btn-table bg-red-500 text-white mr-4 block' onClick={handleDelete}>Delete</button>
                 </div>
             </td>

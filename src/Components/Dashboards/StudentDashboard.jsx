@@ -2,7 +2,6 @@ import { Link, Outlet } from "react-router-dom";
 import home from '../../assets/home.svg'
 import mySelected from '../../assets/add-class.svg'
 import myClasses from '../../assets/my-selected.svg'
-import paymentIcon from '../../assets/payment.svg'
 import payHistory from '../../assets/payment-history.svg'
 
 const StudentDashboard = () => {
@@ -20,8 +19,6 @@ const StudentDashboard = () => {
                         <Link to="my-selected-classes" className="font-bold"><img src={mySelected} alt="selected classes icon" className="inline" /> My Selected Classes</Link>
 
                         <Link to="my-enrolled-classes" className="font-bold"><img src={myClasses} alt="enrolled classes icon" className="inline" /> My Enrolled Classes</Link>
-
-                        <Link to="payment" className="font-bold"><img src={paymentIcon} alt="payment icon" className="inline" /> Payment</Link>
 
                         <Link to="payment-history" className="font-bold"><img src={payHistory} alt="payment history icon" className="inline" /> Payment History</Link>
                     </div>
