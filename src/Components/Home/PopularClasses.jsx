@@ -9,7 +9,7 @@ const PopularClasses = () => {
         queryFn: () => getPopularClasses()
     });
 
-    if (isLoading) return 'Loading...'; console.log(popularClasses)
+    if (isLoading) return 'Loading...';
 
     return (
         <div className="mt-24">
