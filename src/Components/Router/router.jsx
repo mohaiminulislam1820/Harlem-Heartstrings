@@ -16,6 +16,7 @@ import MySelectedClasses from "../Dashboard-components/MySelectedClasses";
 import MyEnrolledClasses from "../Dashboard-components/MyEnrolledClasses";
 import Payment from "../Dashboard-components/Payment";
 import PaymentHistory from "../Dashboard-components/PaymentHistory";
+import Error404 from "../Error404";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
             <ContextWrapper>
                 <App></App>
             </ContextWrapper>,
+        errorElement: <Error404 />,
         children: [
             {
                 path: "/",
@@ -88,6 +90,10 @@ const router = createBrowserRouter([
 
         ]
     },
+    {
+        path: "*",
+        element: <Error404 />
+    }
 
 ]);
 
