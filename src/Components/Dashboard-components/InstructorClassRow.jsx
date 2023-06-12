@@ -15,7 +15,7 @@ const InstructorClassRow = ({ classData }) => {
             <td className='pl-6 py-2'>{status=='denied'?feedback||'No feedback yet.':''}</td>
             <td className='pl-6 '>
                 <div>
-                    <button className='btn-table bg-yellow-500'>Update</button>
+                    <button className='btn-table bg-yellow-500 text-black'>Update</button>
                 </div>
 
             </td>

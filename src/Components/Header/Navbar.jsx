@@ -29,7 +29,7 @@ const Navbar = () => {
                             <ActiveLink to={'/dashboard'} >Dashboard</ActiveLink>
                             <img src={user.photoURL || 'https://i.ibb.co/FzdHYpH/7518698-avatar-people-user-icon-1.png'} alt="user icon" className="rounded-full object-cover w-12" />
 
-                            <button onClick={signOutUser} className="btn-regular bg-slate-700 text-white">Sign Out</button>
+                            <button onClick={signOutUser} className="btn-regular bg-slate-600 text-white">Sign Out</button>
                         </>
                         : <button onClick={() => navigate('/login')} className="btn-regular bg-slate-600 text-white">Login</button>
                 }

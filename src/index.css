@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
+:root {
+  --swiper-navigation-color: whitesmoke;
+  padding: 0;
+  margin:0;
+  box-sizing: border-box;
+}
 .container {
   @apply w-10/12 mx-auto;
 }
@@ -54,6 +59,7 @@ input[type="password"]::-moz-clear-button {
   border: 1px rgb(230, 230, 230) solid;
   position: relative;
   animation: loader 1.4s infinite linear;
+  background-color: white;
   transform: translateZ(0);
 }
 
@@ -91,9 +97,4 @@ input[type="password"]::-moz-clear-button {
   100% {
     transform: rotate(360deg);
   }
-}
-
-.dark-mode{
-  background-color: black !important;
-  color: white;
 }

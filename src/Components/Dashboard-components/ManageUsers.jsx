@@ -24,7 +24,7 @@ const ManageUsers = () => {
             <h1 className='text-center text-5xl font-bold mb-16'>All Users</h1>
             <table>
                 <thead>
-                    <tr className='border bg-slate-200'>
+                    <tr className='border '>
                         <th className="pl-6 py-3">Image</th>
                         <th className="pl-6 py-3">Name</th>
                         <th className="pl-6 py-3">Email</th>

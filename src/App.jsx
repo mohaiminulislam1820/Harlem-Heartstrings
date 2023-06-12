@@ -13,7 +13,7 @@ const App = () => {
   const path = currentLocation.pathname;
   const { darkMode } = useContext(Contexts);
   return (
-    <div data-theme={darkMode?'forest':'light'}>
+    <div data-theme={darkMode?'night':'light'}>
       {!path.includes('dashboard') && <Header></Header>}
       <Outlet></Outlet>
       {!path.includes('dashboard') && <Footer></Footer>}

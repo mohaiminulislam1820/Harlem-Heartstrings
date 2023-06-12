@@ -29,7 +29,7 @@ const StudentClass = ({ myClass, userEmail }) => {
             <td className='pl-6 py-2'>{price}</td>
             <td className='pl-6'>
                 <div className="flex gap-2 ">
-                    <button className='btn-table bg-yellow-500 block' onClick={()=>navigate(`/dashboard/payment/${_id}`)}>Pay</button>
+                    <button className='btn-table bg-yellow-500 block text-black' onClick={()=>navigate(`/dashboard/payment/${_id}`)}>Pay</button>
                     <button className='btn-table bg-red-500 text-white mr-4 block' onClick={handleDelete}>Delete</button>
                 </div>
             </td>

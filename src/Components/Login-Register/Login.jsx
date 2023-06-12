@@ -104,14 +104,14 @@ const Login = () => {
 
                     </div>
 
-                    <button className="bg-[#F9D949] mt-4 btn-regular" type="submit">Sign In</button>
-                    <span className='text-red-400 ml-4'>{errorMsg}</span>
+                    <button className="bg-[#F9D949] mt-4 btn-regular text-black" type="submit">Sign In</button>
+                    <span className='text-red-600 ml-4 '>{errorMsg}</span>
 
                 </form>
 
                 <hr className="mt-10 mb-4 container" />
 
-                <h1>Don't have an account? <span className="text-[#f45050] font-semibold cursor-pointer" onClick={() => navigate('/register')}>Sign Up</span> here</h1>
+                <h1>Don't have an account? <span className="text-[#ee3c3c] font-bold cursor-pointer" onClick={() => navigate('/register')}>Sign Up</span> here</h1>
 
                 <div className="flex justify-center">
                     <button className="mt-8 border-2 px-8 py-3  font-bold rounded-lg shadow-lg" onClick={handleGoogleSignIn}> <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google icon" className="w-8 inline bg-white rounded-full mr-2" /> Sign In with Google</button>

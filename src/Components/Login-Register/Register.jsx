@@ -113,9 +113,9 @@ const Register = () => {
                         <input type="url" {...register("photoUrl")} className="auth-input" placeholder="photo url (eg: https://example.com/photo.jpg )" />
                     </div>
 
-                    <button className="bg-[#F9D949] mt-6 btn-regular" type="submit">Sign Up</button>
+                    <button className="bg-[#F9D949] mt-6 btn-regular text-black" type="submit">Sign Up</button>
 
-                    <span className='text-red-400 ml-4'>{errorMsg}</span>
+                    <span className='text-red-600 ml-4'>{errorMsg}</span>
 
                 </form>
 

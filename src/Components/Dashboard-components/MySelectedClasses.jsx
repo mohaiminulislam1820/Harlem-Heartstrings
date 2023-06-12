@@ -17,12 +17,12 @@ const MySelectedClasses = () => {
         })
     })
 
-    if (isLoading) return <Loading/>
+    if (isLoading) return <Loading />
 
     return (
         <section className="container mt-16">
             <h1 className="text-center text-5xl font-bold mb-12">My Selected Classes</h1>
-            
+
             <div className='overflow-x-auto flex justify-center'>
                 <table className="border">
                     <thead>
@@ -38,13 +38,13 @@ const MySelectedClasses = () => {
                     </thead>
 
                     <tbody className='divide-y-2'>
-                        {myClasses?.data.map(myClass=><StudentClass key={myClass._id} myClass={myClass} userEmail={user.email} />)}
+                        {myClasses?.data.map(myClass => <StudentClass key={myClass._id} myClass={myClass} userEmail={user.email} />)}
                     </tbody>
                 </table>
             </div>
 
-            <p className='mt-6'>{myClasses?.data?.length==0&& 'No selected classes'}</p>
-            
+            <p className='mt-6'>{myClasses?.data?.length == 0 && 'No selected classes'}</p>
+
         </section>
     );
 };

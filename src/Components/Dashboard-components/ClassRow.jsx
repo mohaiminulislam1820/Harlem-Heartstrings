@@ -34,8 +34,8 @@ const ClassRow = ({ classData, adminEmail, refId }) => {
             <td className='pl-6  '>
                 <div className="flex gap-2 items-center py-2">
                     <button className='btn-table bg-green-600 text-white' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('approved')}>Approve</button>
-                    <button className='btn-table bg-red-500' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('denied')}>Deny</button>
-                    <label htmlFor="my_modal_6" className='btn-table bg-yellow-400' onClick={() => refId.current = _id}>Send Feedback</label>
+                    <button className='btn-table bg-red-500 text-white' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('denied')}>Deny</button>
+                    <label htmlFor="my_modal_6" className='btn-table bg-yellow-400 text-black' onClick={() => refId.current = _id}>Send Feedback</label>
                 </div>
             </td>
         </tr>

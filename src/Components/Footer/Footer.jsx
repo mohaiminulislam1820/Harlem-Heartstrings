@@ -48,7 +48,7 @@ const Footer = () => {
                         <span className="footer-title">Newsletter</span>
                         <div className="form-control w-80">
                             <label className="label">
-                                <span className="label-text">Enter your email address</span>
+                                <span>Enter your email address</span>
                             </label>
                             <div className="relative">
                                 <input type="text" placeholder="Your Email" className="input input-bordered w-full pr-16" />
