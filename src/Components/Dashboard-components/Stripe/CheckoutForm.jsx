@@ -1,6 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Contexts } from "../../Context/ContextWrapper";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ const CheckoutForm = ({ classId, classDetails }) => {
     const { user } = useContext(Contexts);
     const stripe = useStripe();
     const elements = useElements();
+    const submitRef = useRef();
 
     const [errMsg, setErrMsg] = useState(null);
     const [clientSecret, setClientSecret] = useState('');
@@ -30,6 +31,7 @@ const CheckoutForm = ({ classId, classDetails }) => {
 
     const handleSubmit = async e => {
         e.preventDefault();
+        submitRef.current.disabled = true;
         if (!stripe || !elements) {
             return;
         }
@@ -44,7 +46,7 @@ const CheckoutForm = ({ classId, classDetails }) => {
         });
 
         if (error) {
-            setErrMsg(error.message)
+            setErrMsg(error.message);
         }
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
@@ -57,8 +59,9 @@ const CheckoutForm = ({ classId, classDetails }) => {
             }
         });
 
-        if (confirmError)
+        if (confirmError) {
             setErrMsg(confirmError.message);
+        }
         if (paymentIntent.status == 'succeeded') {
             const data = { classId: classId, paymentId: paymentIntent.id };
             const res = await axios.patch(`https://harlem-heartstrings-api.vercel.app/save-payment?email=${user.email}`, JSON.stringify(data), {
@@ -67,10 +70,11 @@ const CheckoutForm = ({ classId, classDetails }) => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
             });
-            console.log(res.data);
-            toast('Payment Successful, You have been enrolled to the class');
+
+            toast('	✅ Payment Successful, You have been enrolled to the class');
+            submitRef.current.disabled = true;
         }
-        console.log(paymentIntent)
+
     }
 
     return (
@@ -91,7 +95,7 @@ const CheckoutForm = ({ classId, classDetails }) => {
                     },
                 }}
             />
-            <button className="btn-regular mt-6 bg-yellow-400" type="submit" disabled={!stripe || !elements || !clientSecret}>
+            <button className="btn-regular mt-6 bg-yellow-400" type="submit" ref={submitRef} disabled={!stripe || !elements || !clientSecret}>
                 Pay
             </button>
 

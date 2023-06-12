@@ -6,9 +6,14 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
 
     const handleSelect = async () => {
         if(!role){
-            toast("Please Login First");
+            toast("⚠️ Please Login First");
             return;
         }
+        if(available_seats==0){
+            toast('⚠️ No available seat to enroll ');
+            return;
+        }
+
         const result = await axios.patch(`https://harlem-heartstrings-api.vercel.app/update-selected-class?email=${userEmail}`, JSON.stringify({ selected_class: _id }), {
             headers: {
                 "Content-Type": "application/json",
@@ -24,7 +29,7 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
         }
     }
     return (
-        <div className="border rounded-lg shadow-md p-6">
+        <div className={available_seats==0?"border rounded-lg shadow-md p-6 bg-red-500":"border rounded-lg shadow-md p-6"}>
             <img src={image} alt="class photo" className="object-cover h-[300px] w-full mb-8 rounded-md" />
 
             <p className="mb-2"><span className="font-semibold">Class Name : </span>{name}</p>

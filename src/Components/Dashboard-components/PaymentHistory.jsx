@@ -24,6 +24,8 @@ const PaymentHistory = () => {
         <div className="container mt-20">
             <h1 className="section-title mb-16">Payment History</h1>
 
+            <p>{payment_history?.data?.length==0&& 'No selected classes'}</p>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 {payment_history?.data?.map(paymentDetails=><PaymentHistoryCard key={paymentDetails?.created} paymentDetails={paymentDetails} />)}
         </div>

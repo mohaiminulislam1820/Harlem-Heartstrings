@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import home from '../../assets/home.svg'
 import addClass from '../../assets/add-class.svg'
 import classes from '../../assets/manage-class.svg'
@@ -24,7 +24,7 @@ const InstructorDashboard = () => {
                 </div>
 
                 <div className="col-span-1 lg:col-span-2 xl:col-span-3">
-
+                <Navigate to='/dashboard/instructor-classes'></Navigate>
                     <Outlet></Outlet>
                 </div>
 

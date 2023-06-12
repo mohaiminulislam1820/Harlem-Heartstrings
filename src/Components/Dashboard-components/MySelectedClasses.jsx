@@ -22,7 +22,7 @@ const MySelectedClasses = () => {
     return (
         <section className="container mt-16">
             <h1 className="text-center text-5xl font-bold mb-12">My Selected Classes</h1>
-
+            
             <div className='overflow-x-auto flex justify-center'>
                 <table className="border">
                     <thead>
@@ -42,6 +42,8 @@ const MySelectedClasses = () => {
                     </tbody>
                 </table>
             </div>
+
+            <p className='mt-6'>{myClasses?.data?.length==0&& 'No selected classes'}</p>
             
         </section>
     );

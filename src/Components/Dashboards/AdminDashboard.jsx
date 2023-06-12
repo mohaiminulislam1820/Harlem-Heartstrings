@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 import home from '../../assets/home.svg'
 import classes from '../../assets/classes.svg'
 import user from '../../assets/user.svg'
@@ -24,7 +24,7 @@ const AdminDashboard = () => {
                 </div>
 
                 <div className="col-span-1 lg:col-span-2 xl:col-span-3">
-
+                    <Navigate to='/dashboard/manage-classes'></Navigate>
                     <Outlet></Outlet>
                 </div>
 
