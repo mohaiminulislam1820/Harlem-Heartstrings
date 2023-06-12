@@ -9,7 +9,7 @@ const StudentDashboard = () => {
         <>
             <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 items-stretch">
 
-                <div className="bg-yellow-400 col-span-1 py-16 pl-10 md:min-h-[770px]">
+                <div className="bg-yellow-400 col-span-1 py-16 pl-10 md:min-h-[770px] text-black">
                     <h1 className="text-5xl font-bold mb-10">Student Dashboard</h1>
                     <hr className="border-2 mb-8 border-black" />
                     <div className="flex flex-col gap-6">

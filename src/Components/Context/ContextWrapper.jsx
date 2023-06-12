@@ -9,6 +9,8 @@ export const Contexts = createContext();
 const ContextWrapper = ({ children }) => {
     const [user, setUser] = useState(null);
 
+    const [darkMode,setDarkMode]=useState(false);
+
     const [loading, setLoading] = useState(true);
 
     usePageTitle();
@@ -48,7 +50,7 @@ const ContextWrapper = ({ children }) => {
     }
 
 
-    const contextList = { user, loading, setLoading, signUpWithEmail, signInWithEmail, signInWithGoogle, signOutUser }
+    const contextList = { user, loading, setLoading, signUpWithEmail, signInWithEmail, signInWithGoogle, signOutUser,darkMode, setDarkMode }
 
     return (
         <>

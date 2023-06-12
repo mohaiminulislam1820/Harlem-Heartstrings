@@ -30,7 +30,7 @@ const Testimonials = () => {
                         <div key={testimonial.id} className=" rounded-lg shadow-md border-2 px-6 pt-12 pb-6 relative animate__animated animate__fadeInBottomLeft animate__delay-1s">
                             <img src={testimonial.image} alt="profile photo" className="rounded-full w-20 absolute top-0 right-1/2 translate-x-1/2  -translate-y-1/2 border-2 border-red-400" />
                             <p className="text-lg mb-4">"{testimonial.quote}"</p>
-                            <p className="text-gray-600">{testimonial.name}</p>
+                            <p >- {testimonial.name}</p>
                         </div>
                     ))}
                 </div>
