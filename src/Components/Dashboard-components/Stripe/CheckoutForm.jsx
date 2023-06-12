@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 
 
-const CheckoutForm = ({ classId }) => {
+const CheckoutForm = ({ classId, classDetails }) => {
     const { user } = useContext(Contexts);
     const stripe = useStripe();
     const elements = useElements();
@@ -27,7 +27,7 @@ const CheckoutForm = ({ classId }) => {
     useEffect(() => {
         getClientSecret();
     }, [])
-  
+
     const handleSubmit = async e => {
         e.preventDefault();
         if (!stripe || !elements) {
