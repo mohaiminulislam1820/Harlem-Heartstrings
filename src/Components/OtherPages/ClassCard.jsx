@@ -29,7 +29,7 @@ const ClassCard = ({ violinClass, userEmail, role }) => {
         }
     }
     return (
-        <div className={available_seats==0?"border rounded-lg shadow-md p-6 bg-red-500":"border rounded-lg shadow-md p-6"}>
+        <div className={available_seats==0?"border rounded-lg shadow-md p-6 bg-red-500":"border rounded-lg shadow-md p-4"}>
             <img src={image} alt="class photo" className="object-cover h-[300px] w-full mb-8 rounded-md" />
 
             <p className="mb-2"><span className="font-semibold">Class Name : </span>{name}</p>

@@ -63,7 +63,7 @@ const ManageClasses = () => {
                     </thead>
 
                     <tbody className='divide-y-2'>
-                        {classes.data.map(classData => <ClassRow key={classData._id} classData={classData} adminEmail={user.email} refId={refId} />)}
+                        {classes.data.map(classData => <ClassRow key={classData._id} classData={classData} adminEmail={user.email} refId={refId} refModal={refModal} />)}
                     </tbody>
                 </table>
             </div>

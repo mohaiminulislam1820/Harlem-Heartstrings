@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
-const ClassRow = ({ classData, adminEmail, refId }) => {
+const ClassRow = ({ classData, adminEmail, refId, refModal }) => {
     const { image, name, instructorName, available_seats, price, status, instructor_email, _id } = classData;
 
     const queryClient = useQueryClient();
@@ -35,7 +35,11 @@ const ClassRow = ({ classData, adminEmail, refId }) => {
                 <div className="flex gap-2 items-center py-2">
                     <button className='btn-table bg-green-600 text-white' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('approved')}>Approve</button>
                     <button className='btn-table bg-red-500 text-white' disabled={status == "pending" ? false : true} onClick={() => handleTaskStatus('denied')}>Deny</button>
-                    <label htmlFor="my_modal_6" className='btn-table bg-yellow-400 text-black' onClick={() => refId.current = _id}>Send Feedback</label>
+                    <button className='btn-table bg-yellow-400 text-black' onClick={() => {
+                        refId.current = _id;
+                        if (status !== "pending")
+                            refModal.current.checked = true;
+                    }}>Send Feedback</button>
                 </div>
             </td>
         </tr>
