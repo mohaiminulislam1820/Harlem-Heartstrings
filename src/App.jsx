@@ -3,6 +3,7 @@ import Header from "./Components/Header/Header";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "./Components/Footer/Footer";
+import 'animate.css';
 
 
 const App = () => {

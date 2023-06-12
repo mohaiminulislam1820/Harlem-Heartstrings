@@ -22,4 +22,4 @@ Harlem Heartstrings is an online platform that offers violin classes taught by e
 
 
 #### Package dependencies: 
-react, react-router dOM, firebase, react-toastify, Tailwind CSS, DaisyUI, react-stripe-js, stripe-js, swiper, react-hook-form, axios, tanstack/react-query
+react, react-router dOM, firebase, react-toastify, Tailwind CSS, DaisyUI, react-stripe-js, stripe-js, swiper, react-hook-form, axios, tanstack/react-query, react-awesome-reveal

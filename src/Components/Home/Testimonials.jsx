@@ -27,7 +27,7 @@ const Testimonials = () => {
                 <p className="text-center mb-28">Hear what our students and parents have to say about our violin classes. Whether you are a beginner or an advanced player, we have the right teacher and program for you. Our violin teachers are passionate, experienced and professional. They will help you develop your skills, technique and musicality in a fun and supportive environment. Here are some of the testimonials from our happy customers.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
                     {testimonials.map(testimonial => (
-                        <div key={testimonial.id} className=" rounded-lg shadow-md border-2 px-6 pt-12 pb-6 relative">
+                        <div key={testimonial.id} className=" rounded-lg shadow-md border-2 px-6 pt-12 pb-6 relative animate__animated animate__fadeInBottomLeft animate__delay-1s">
                             <img src={testimonial.image} alt="profile photo" className="rounded-full w-20 absolute top-0 right-1/2 translate-x-1/2  -translate-y-1/2 border-2 border-red-400" />
                             <p className="text-lg mb-4">"{testimonial.quote}"</p>
                             <p className="text-gray-600">{testimonial.name}</p>
