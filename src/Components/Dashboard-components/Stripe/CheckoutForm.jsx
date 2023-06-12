@@ -47,6 +47,7 @@ const CheckoutForm = ({ classId, classDetails }) => {
 
         if (error) {
             setErrMsg(error.message);
+            submitRef.current.disabled = false;
         }
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
@@ -61,6 +62,7 @@ const CheckoutForm = ({ classId, classDetails }) => {
 
         if (confirmError) {
             setErrMsg(confirmError.message);
+            submitRef.current.disabled = false;
         }
         if (paymentIntent.status == 'succeeded') {
             const data = { classId: classId, paymentId: paymentIntent.id };

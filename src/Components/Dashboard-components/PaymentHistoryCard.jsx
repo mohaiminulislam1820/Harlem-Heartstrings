@@ -4,7 +4,7 @@ const PaymentHistoryCard = ({paymentDetails}) => {
     const{amount,metadata,created}=paymentDetails;
 
     return (
-        <div className="border shadown-md p-4 rounded-lg flex flex-col gap-4">
+        <div className="border shadown-md p-4 rounded-lg flex flex-col gap-4 shadow-md">
             <p><span className="font-semibold">Class Name :</span> ${metadata.name}</p>
 
             <p><span className="font-semibold">Instructor Name :</span> ${metadata.instructorName}</p>
