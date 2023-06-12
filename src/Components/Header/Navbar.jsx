@@ -12,7 +12,7 @@ const Navbar = () => {
     const { user, signOutUser, loading } = useContext(Contexts);
 
     return (
-        <nav className="container my-10 flex justify-between flex-wrap items-center gap-x-32 gap-y-6">
+        <nav className="container py-10 flex justify-between flex-wrap items-center gap-x-32 gap-y-6">
             <h1 className="font-bold text-4xl text-[#3C486B] cursor-pointer" onClick={() => navigate('/')}>Harlem Heartstrings</h1>
 
             <div className="flex flex-wrap gap-6 items-center">

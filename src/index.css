@@ -93,3 +93,7 @@ input[type="password"]::-moz-clear-button {
   }
 }
 
+.dark-mode{
+  background-color: black !important;
+  color: white;
+}
